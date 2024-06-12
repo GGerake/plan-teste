@@ -1,4 +1,4 @@
-import { Box, IconButton, useTheme } from "@mui/material";
+import { Box, IconButton, useTheme, Typography} from "@mui/material";
 import { useContext } from "react";
 import { ColorModeContext, tokens } from "../../theme";
 import InputBase from "@mui/material/InputBase";
@@ -17,7 +17,7 @@ const Topbar = () => {
   return (
     <Box display="flex" justifyContent="space-between" p={2}>
       {/* Search Bar */}
-      <Box
+      {/* <Box
         display="flex"
         backgroundColor={colors.primary[400]}
         borderRadius="3px"
@@ -26,7 +26,9 @@ const Topbar = () => {
         <IconButton type="button" sx={{ p: 1 }}>
           <SearchIcon />
         </IconButton>
-      </Box>
+      </Box> */}
+
+
 
       {/* Icons  */}
       <Box display="flex">
@@ -37,15 +39,29 @@ const Topbar = () => {
             <LightModeOutlinedIcon />
           )}
         </IconButton>
-        <IconButton>
+        {/* <IconButton>
           <NotificationsOutlinedIcon />
-        </IconButton>
-        <IconButton>
+        </IconButton> */}
+        {/* <IconButton>
           <SettingsOutlinedIcon />
-        </IconButton>
-        <IconButton>
+        </IconButton> */}
+        {/* <IconButton>
           <PersonOutlinedIcon />
-        </IconButton>
+        </IconButton> */}
+      </Box>
+
+
+      <Box textAlign="center">
+        <Typography
+          variant="h3"
+          color={colors.grey[100]}
+          sx={{ m: "5px 0 0 0" }}
+        >
+          Olá, Fulano da Silva
+        </Typography>
+        {/* <Typography variant="h5" color={colors.greenAccent[500]}>
+          VP Fancy Admin
+        </Typography> */}
       </Box>
     </Box>
   );

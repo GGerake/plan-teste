@@ -2,6 +2,7 @@ import { useTheme } from "@emotion/react";
 import { ResponsiveBar } from "@nivo/bar";
 import { tokens } from "../theme";
 import { mockBarData as data } from "../data/mockData";
+import React, { useState, useEffect } from 'react';
 
 const BarChart = () => {
   const theme = useTheme();
