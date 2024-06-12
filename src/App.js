@@ -15,6 +15,11 @@ import Dashboard from "./scenes/dashboard";
 // import Geography from "./scenes/geography";
 // import Calendar from "./scenes/calendar";
 
+import './App.css';
+import GraficoComponent from './components/GraficoComponent';
+import OperadoresLogados from './components/SocketIo'; 
+
+
 function App() {
   const [theme, colorMode] = useMode();
 
@@ -40,12 +45,15 @@ function App() {
               {/* <Route path="/calendar" element={<Calendar />} /> */}
             </Routes>
           </main>
+
+          <OperadoresLogados />
+          <GraficoComponent />
+
         </div>
       </ThemeProvider>
     </ColorModeContext.Provider>
   );
 }
-
 export default App;
 
 // Bibliotecas instaladas no início
