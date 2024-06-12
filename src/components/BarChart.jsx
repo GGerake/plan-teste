@@ -1,12 +1,29 @@
 import { useTheme } from "@emotion/react";
 import { ResponsiveBar } from "@nivo/bar";
 import { tokens } from "../theme";
-import { mockBarData as data } from "../data/mockData";
-import React, { useState, useEffect } from 'react';
+import { mockBarData } from "../data/mockData";
+import React, { useState, useEffect } from "react";
 
 const BarChart = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+
+  const [data, setData] = useState(mockBarData);
+
+  const fetchData = () => {
+
+    const newData = mockBarData; 
+
+    setData(newData);
+  };
+
+  useEffect(() => {
+
+    fetchData();
+
+    const interval = setInterval(fetchData, 2000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <ResponsiveBar

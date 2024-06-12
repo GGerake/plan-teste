@@ -12,6 +12,9 @@ body,
 body {
   transition: 300ms;
 }
+.content {
+  overflow: hidden;
+}
 .app {
   display: flex;
   position: relative;
