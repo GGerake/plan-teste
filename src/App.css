@@ -2,7 +2,12 @@
 body {
   background-color: #080909;
   color: #fff;
-  
+
+}
+.app {
+  display: flex;
+  position: relative;
+  flex-direction: column;
 }
 .App {
   text-align: center;
