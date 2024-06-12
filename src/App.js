@@ -2,29 +2,34 @@ import { ColorModeContext, useMode } from "./theme";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import Topbar from "./scenes/global/Topbar";
 
+
 import './App.css';
 import GraficoComponent from './components/GraficoComponent';
-import OperadoresLogados from './components/SocketIo'; 
+import { SocketProvider } from './components/SocketContext'; 
+import OperadoresLogados from "./components/OperadoresLogados";
 
 
 function App() {
   const [theme, colorMode] = useMode();
 
   return (
-    <ColorModeContext.Provider value={colorMode}>
-      <ThemeProvider theme={theme}>
-        <CssBaseline/>
-        <div className="app">
-          <main className="content">
-            <Topbar/>
-          </main>
+    <SocketProvider>
+      <ColorModeContext.Provider value={colorMode}>
+        <ThemeProvider theme={theme}>
+          <CssBaseline/>
+          <div className="app">
+            <main className="content">
+              <Topbar/>
+            </main>
 
-          <OperadoresLogados />
-          <GraficoComponent />
+            <OperadoresLogados />
+            <GraficoComponent />
 
-        </div>
-      </ThemeProvider>
-    </ColorModeContext.Provider>
+          </div>
+        </ThemeProvider>
+      </ColorModeContext.Provider>
+    </SocketProvider>
+    
   );
 }
 export default App;

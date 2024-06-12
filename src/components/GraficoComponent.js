@@ -1,21 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Plot from 'react-plotly.js';
+import { SocketContext } from './SocketContext';
 
 const GraficoLinhas = () => {
+  const dadosOp = useContext(SocketContext);
+
+
   const [data, setData] = useState({
     x: [new Date().toLocaleTimeString()],
-    y: [document.querySelector('#qtdNumOperador').innerHTML],
+    y: [dadosOp.operadores_logados],
   });
-
+  
   useEffect(() => {
 
-    let contOperadoresLogados = 0
+    let contOperadoresLogados = dadosOp.operadores_logados
 
     const interval = setInterval(() => {
 
       try {
         contOperadoresLogados = document.querySelector('#qtdNumOperador').innerHTML
-        console.log(contOperadoresLogados)
+
       } catch {}
 
       setData(prevData => {
@@ -64,7 +68,8 @@ const GraficoLinhas = () => {
             xaxis: {
               gridcolor: '#000000', // cor da grade do eixo x
               zerolinecolor: '#444444', // cor da linha zero do eixo x
-              linecolor: '#444444', // cor da linha do eixo x
+              linecolor: '#444444', // cor da linha do edeixo x
+              linecolor: '#444444', // cor da linha do edeixo x
             },
             yaxis: {
               gridcolor: '#000000', // cor da grade do eixo y
