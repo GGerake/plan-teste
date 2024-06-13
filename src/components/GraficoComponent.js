@@ -1,18 +1,30 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Plot from 'react-plotly.js';
+import { SocketContext } from './SocketContext';
 
 const GraficoLinhas = () => {
+  const dadosOp = useContext(SocketContext);
+
+
   const [data, setData] = useState({
     x: [new Date().toLocaleTimeString()],
-    y: [Math.floor(Math.random() * 10)],
+    y: [dadosOp.operadores_logados],
   });
-
+  
   useEffect(() => {
 
+    let contOperadoresLogados = dadosOp.operadores_logados
+
     const interval = setInterval(() => {
+
+      try {
+        contOperadoresLogados = document.querySelector('#qtdNumOperador').innerHTML
+
+      } catch {}
+
       setData(prevData => {
         const newX = new Date().toLocaleTimeString(); // Gera o horário atual
-        const newY = Math.floor(Math.random() * 10); // Gera um número aleatório entre 0 e 9
+        const newY = contOperadoresLogados; // Gera um número aleatório entre 0 e 9
         const newData = {
           x: [...prevData.x, newX],
           y: [...prevData.y, newY],
@@ -48,15 +60,16 @@ const GraficoLinhas = () => {
           ]}
           layout={{
             title: 'Exemplo de Linhas',
-            paper_bgcolor: '#1b1b1b', // cor de fundo do gráfico
-            plot_bgcolor: '#1b1b1b', // cor de fundo da área do gráfico
+            paper_bgcolor: '#0a0e16e3', // cor de fundo do gráfico
+            plot_bgcolor: '#0a0e16', // cor de fundo da área do gráfico
             font: {
               color: '#ffffff', // cor do texto
             },
             xaxis: {
               gridcolor: '#000000', // cor da grade do eixo x
               zerolinecolor: '#444444', // cor da linha zero do eixo x
-              linecolor: '#444444', // cor da linha do eixo x
+              linecolor: '#444444', // cor da linha do edeixo x
+              linecolor: '#444444', // cor da linha do edeixo x
             },
             yaxis: {
               gridcolor: '#000000', // cor da grade do eixo y

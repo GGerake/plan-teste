@@ -2,6 +2,7 @@ import { ColorModeContext, useMode } from "./theme";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { Routes, Route } from "react-router-dom";
 import Topbar from "./scenes/global/Topbar";
+
 import Sidebar from "./scenes/global/Sidebar"
 import Dashboard from "./scenes/dashboard";
 // import Team from "./scenes/team";
@@ -17,20 +18,22 @@ import Line from "./scenes/line";
 
 // import './App.css';
 import GraficoComponent from './components/GraficoComponent';
-import OperadoresLogados from './components/SocketIo'; 
+import { SocketProvider } from './components/SocketContext'; 
+import OperadoresLogados from "./components/OperadoresLogados";
 
 
 function App() {
   const [theme, colorMode] = useMode();
 
   return (
-    <ColorModeContext.Provider value={colorMode}>
-      <ThemeProvider theme={theme}>
-        <CssBaseline/>
-        <div className="app">
+    <SocketProvider>
+      <ColorModeContext.Provider value={colorMode}>
+        <ThemeProvider theme={theme}>
+          <CssBaseline/>
+          <div className="app">
           <Sidebar />
-          <main className="content">
-            <Topbar/>
+            <main className="content">
+              <Topbar/>
             <Routes>
               <Route path="/" element={<Dashboard />} />
               {/* <Route path="/team" element={<Team />} /> */}
@@ -44,14 +47,16 @@ function App() {
               {/* <Route path="/geography" element={<Geography />} /> */}
               {/* <Route path="/calendar" element={<Calendar />} /> */}
             </Routes>
-          </main>
+            </main>
 
-          {/* <OperadoresLogados />
-          <GraficoComponent /> */}
+            <OperadoresLogados />
+            <GraficoComponent />
 
-        </div>
-      </ThemeProvider>
-    </ColorModeContext.Provider>
+          </div>
+        </ThemeProvider>
+      </ColorModeContext.Provider>
+    </SocketProvider>
+    
   );
 }
 export default App;
