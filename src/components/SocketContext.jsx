@@ -11,6 +11,7 @@ export const SocketProvider = ({children}) => {
         status_Em_Pausa: null,
         status_Conversando: null,
         status_Disponível: null,
+        alerta: null,
     })
     
     const listaInfosGraficos = [
@@ -19,6 +20,7 @@ export const SocketProvider = ({children}) => {
         ,'status_Em_Pausa'
         ,'status_Conversando'
         ,'status_Disponível'
+        ,'alerta'
     ]
 
     useEffect(() => {

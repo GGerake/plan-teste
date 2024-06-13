@@ -7,6 +7,10 @@ function OperadoresLogados() {
     return (
         <div className='operadoresLogadosArea'>
             <h1>Teste de conexão Socket IO</h1>
+            <div className="alerta">
+                <p>Alerta: <span id="alerta"> {data.alerta}</span></p>
+            </div>
+            
             <div className="infos">
                 
                 <p>Operadores Logados:  <span id="qtdNumOperador">      {data.operadores_logados}</span></p>

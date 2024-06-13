@@ -17,9 +17,7 @@ import Line from "./scenes/line";
 // import Calendar from "./scenes/calendar";
 
 import './line.css';
-import GraficoComponent from './components/GraficoComponent';
 import { SocketProvider } from './components/SocketContext'; 
-import OperadoresLogados from "./components/OperadoresLogados";
 
 
 function App() {
