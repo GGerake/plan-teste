@@ -13,7 +13,7 @@ body {
   transition: 300ms;
 }
 .content {
-  overflow: hidden;
+  overflow-X: hidden;
 }
 .app {
   display: flex;
