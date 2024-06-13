@@ -16,7 +16,7 @@ import Line from "./scenes/line";
 // import Geography from "./scenes/geography";
 // import Calendar from "./scenes/calendar";
 
-// import './App.css';
+import './line.css';
 import GraficoComponent from './components/GraficoComponent';
 import { SocketProvider } from './components/SocketContext'; 
 import OperadoresLogados from "./components/OperadoresLogados";
@@ -49,8 +49,6 @@ function App() {
             </Routes>
             </main>
 
-            <OperadoresLogados />
-            <GraficoComponent />
 
           </div>
         </ThemeProvider>
