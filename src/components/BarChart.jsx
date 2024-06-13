@@ -1,33 +1,35 @@
 import { useTheme } from "@emotion/react";
 import { ResponsiveBar } from "@nivo/bar";
 import { tokens } from "../theme";
-import { mockBarData } from "../data/mockData";
-import React, { useState, useEffect } from "react";
+import React, { useContext } from "react";
+import { SocketContext } from './SocketContext';
 
 const BarChart = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
-
-  const [data, setData] = useState(mockBarData);
-
-  const fetchData = () => {
-
-    const newData = mockBarData; 
-
-    setData(newData);
-  };
-
-  useEffect(() => {
-
-    fetchData();
-
-    const interval = setInterval(fetchData, 2000);
-    return () => clearInterval(interval);
-  }, []);
+  
+  const data = useContext(SocketContext);
 
   return (
     <ResponsiveBar
-      data={data}
+      data={[
+        {
+          status: "Indisponível",
+          Indisponível: data.status_Indisponível,
+        },
+        {
+          status: "Em Pausa",
+          "Em Pausa": data.status_Em_Pausa,
+        },
+        {
+          status: "Conversando",
+          Conversando: data.status_Conversando,
+        },
+        {
+          status: "Disponível",
+          Disponível: data.status_Disponível,
+        },
+      ]}
       theme={{
         text: {
           fontSize: 40,
