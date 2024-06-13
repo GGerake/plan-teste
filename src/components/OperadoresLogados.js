@@ -7,7 +7,7 @@ function OperadoresLogados() {
     return (
         <div className='operadoresLogadosArea'>
             <h1>Teste de conexão Socket IO</h1>
-            <div class="infos">
+            <div className="infos">
                 
                 <p>Operadores Logados:  <span id="qtdNumOperador">      {data.operadores_logados}</span></p>
                 <p>Status Indisponível: <span id="statusIndisponivel">  {data.status_Indisponível}</span></p>
